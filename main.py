@@ -1,6 +1,7 @@
 from data_Reader import CSVDataReader
 
 if __name__ == "__main__":
-        csv_reader = CSVDataReader([], [], 0, {}, {})
-        csv_reader.FileReader('result.csv')
-        print(csv_reader.unique_tweets)
+        # text_Data, tweets_per_hour, tweets_per_day, unique_tweet
+        csv_reader = CSVDataReader()
+        data_set_list = csv_reader.FileReader('result.csv')
+        print(data_set_list[3])

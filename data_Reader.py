@@ -4,24 +4,25 @@ from collections import Counter, OrderedDict
 
 class CSVDataReader():
 
-        def __init__(self, raw_Data, text_Data, unique_tweets, tweets_per_hour, tweets_per_day):
-                self.raw_Data = raw_Data
-                self.text_Data = text_Data
-
-                self.unique_tweets = unique_tweets
-
-                self.tweets_per_hour = tweets_per_hour
-                self.tweets_per_day = tweets_per_day
-        
+        def __init__(self):
+                return
         def FileReader(self, fileName):
 
                 self.temp_id = []
                 self.temp_datelist = []
                 self.temp_time_of_day = []
+
+                self.raw_Data = []
+                self.text_Data = []
+
+                self.unique_tweets = 0
+
+                self.tweets_per_hour = {}
+                self.tweets_per_day = {}
+        
                 
                 with open(fileName, 'rb') as data:
                         reader = csv.reader(data, delimiter=";", lineterminator="\n", encoding='utf-8')
-                        next(reader, None)
                         
                         # Die csv Datei wird Zeile fuer Zeile eingelesen und aufs Datum 
                         # geprueft um die relevanten Daten zu filtern
@@ -51,4 +52,5 @@ class CSVDataReader():
                         self.tweets_per_hour = OrderedDict(sorted(self.tweets_per_hour.items(), key=lambda t: t[0]))
                         self.tweets_per_day = Counter(self.temp_datelist) # Zaehlen der tweets je Tag
                         self.tweets_per_day = OrderedDict(sorted(self.tweets_per_day.items(), key=lambda t: t[0]))
-                        data.close()		
+                        data.close()
+                return [self.text_Data, self.tweets_per_hour, self.tweets_per_day, self.unique_tweets]
