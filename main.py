@@ -6,5 +6,7 @@ if __name__ == "__main__":
         csv_reader = CSVDataReader()
         data_set_list = csv_reader.FileReader('result.csv')
 
+        print (data_set_list[3])
+
         timelines = TimelineCreator(data_set_list[2], data_set_list[1])
         timelines.timeline()
