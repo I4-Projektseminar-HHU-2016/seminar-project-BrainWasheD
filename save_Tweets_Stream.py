@@ -9,11 +9,9 @@ auth.set_access_token(access_token, access_token_secret)
 
 
 def start_stream():
-        try:
-                api = tweepy.streaming.Stream(auth, TwitterStreamListener(), timeout=60, compression=True)
-                api.filter(follow = None, track = ['#Warcraft', '#Legion'])
-        except IncompleteRead:
-                pass
+        api = tweepy.streaming.Stream(auth, TwitterStreamListener(), timeout=60, compression=True, wait_on_rate_limit=True)
+        api.filter(follow = None, track = ['#Warcraft', '#Legion', '#WoW', '#WorldOfWarcraft'])
+        return
                 
 
 class TwitterStreamListener(tweepy.StreamListener):
@@ -30,22 +28,29 @@ class TwitterStreamListener(tweepy.StreamListener):
                         with open('result.csv', 'ab') as resultFile:
                                 writer = csv.writer(resultFile,
                                                 delimiter=";",
-                                                lineterminator="\n",
+                                                lineterminator="\r\n",
                                                 encoding='utf-8')
                                 writer.writerow([tweet.id_str, tweet.created_at, tweet.text])
                         print (TwitterStreamListener.tweet_count)
+                return
+
+        def on_error(self, status_code):
+                print ('Error: ' +repr(status_code) +'restarting...')
+                lambda e:self.start_stream()
+                return
 
         def on_timeout(self):
                 print ("Timeout... restarting...")
-                time.sleep(15)
-                start_stream()
+                lambda e:self.start_stream()
+                return True
 
-        def on_limit(self):
+        def on_limit(self, track):
                 print ("Limit reached... restarting...")
-                time.sleep(15)
-                start_stream()
+                lambda e:self.start_stream()
+                return
 
 
 if __name__ == "__main__":
         start_stream()
 
+        

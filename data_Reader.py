@@ -22,7 +22,7 @@ class CSVDataReader():
         
                 
                 with open(fileName, 'rb') as data:
-                        reader = csv.reader(data, delimiter=";", lineterminator="\n", encoding='utf-8')
+                        reader = csv.reader(data, delimiter=";", lineterminator="\r\n", encoding='utf-8')
                         
                         # Die csv Datei wird Zeile fuer Zeile eingelesen und aufs Datum 
                         # geprueft um die relevanten Daten zu filtern
