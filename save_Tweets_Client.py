@@ -24,7 +24,10 @@ class TwitterClientCrawler():
                                         delimiter=";",
                                         lineterminator="\n",
                                         encoding='utf-8')
-                    writer.writerow([tweet.id_str, tweet.created_at, tweet.text])
+                    if tweet.place:
+                        writer.writerow([tweet.id_str, tweet.created_at, tweet.text, tweet.lang, tweet.place.bounding_box.coordinates])
+                    else:
+                        writer.writerow([tweet.id_str, tweet.created_at, tweet.text, tweet.lang, 'NaN'])
         resultFile.close()
 
 if __name__ == "__main__":

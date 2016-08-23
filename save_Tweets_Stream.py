@@ -10,7 +10,7 @@ auth.set_access_token(access_token, access_token_secret)
 
 def start_stream():
         api = tweepy.streaming.Stream(auth, TwitterStreamListener(), timeout=60, compression=True, wait_on_rate_limit=True)
-        api.filter(follow = None, track = ['#Warcraft', '#Legion', '#WoW', '#WorldOfWarcraft'])
+        api.filter(follow = None, track = ['#Warcraft', '#Legion', '#WorldOfWarcraft'])
         return
                 
 
@@ -30,7 +30,10 @@ class TwitterStreamListener(tweepy.StreamListener):
                                                 delimiter=";",
                                                 lineterminator="\r\n",
                                                 encoding='utf-8')
-                                writer.writerow([tweet.id_str, tweet.created_at, tweet.text])
+                                if tweet.place:
+                                        writer.writerow([tweet.id_str, tweet.created_at, tweet.text, tweet.lang, tweet.place.bounding_box.coordinates])
+                                else:
+                                        writer.writerow([tweet.id_str, tweet.created_at, tweet.text, tweet.lang, 'NaN'])
                         print (TwitterStreamListener.tweet_count)
                 return
 
