@@ -39,9 +39,9 @@ class CSVDataReader():
                                         self.temp_id.append(row[0])
                                         self.unique_tweets += 1
                                         
-                                        self.text_Data[row[0]] = row[2]  # save text into dictionary[tweet_id]
-                                        self.lang_Data[row[0]] = row[3]
-			
+                                        self.text_Data[row[0]] = row[2].lower()  # save text into dictionary[tweet_id]
+                                        self.lang_Data[row[0]] = row[3].lower()
+                                
                                         self.new_time = self.split_date[1].split(':') # Stunden, Min. und Sek. aufbrechen
                                         self.temp_time_of_day.append(self.new_time[0]) # Nur Stunden gespeichert
 
