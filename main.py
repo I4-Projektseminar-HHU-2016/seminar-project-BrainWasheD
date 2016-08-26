@@ -18,10 +18,11 @@ if __name__ == "__main__":
         # List of Lists: full, english, german, french, spanish, russian, finnish, norwegian, swedisch, dutch, italian
         # Each List has: full text without stopwords, hashtags, mentions, keywords only
         filtered_data_list = stops.remove_Stopwords(data_set_list[0], data_set_list[1])
-        
+
+        #full_freq, en_freq, de_freq, fr_freq, es_freq, ru_freq, fi_freq, no_freq, sv_freq, nl_freq, it_freq
         undivided_toplist = tops.frequency(data_set_list[1], filtered_data_list[1][0], filtered_data_list[2][0], filtered_data_list[3][0], filtered_data_list[4][0], filtered_data_list[5][0], filtered_data_list[6][0], filtered_data_list[7][0], filtered_data_list[8][0], filtered_data_list[9][0], filtered_data_list[10][0])
         hashtag_toplist = tops.frequency(data_set_list[1], filtered_data_list[1][1], filtered_data_list[2][1], filtered_data_list[3][1], filtered_data_list[4][1], filtered_data_list[5][1], filtered_data_list[6][1], filtered_data_list[7][1], filtered_data_list[8][1], filtered_data_list[9][1], filtered_data_list[10][1])
         mention_toplist = tops.frequency(data_set_list[1], filtered_data_list[1][2], filtered_data_list[2][2], filtered_data_list[3][2], filtered_data_list[4][2], filtered_data_list[5][2], filtered_data_list[6][2], filtered_data_list[7][2], filtered_data_list[8][2], filtered_data_list[9][2], filtered_data_list[10][2])
         keyword_toplist = tops.frequency(data_set_list[1], filtered_data_list[1][3], filtered_data_list[2][3], filtered_data_list[3][3], filtered_data_list[4][3], filtered_data_list[5][3], filtered_data_list[6][3], filtered_data_list[7][3], filtered_data_list[8][3], filtered_data_list[9][3], filtered_data_list[10][3])
 
-        print (keyword_toplist[0])
+        print (data_set_list[4])
