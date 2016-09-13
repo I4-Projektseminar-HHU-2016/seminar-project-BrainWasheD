@@ -8,6 +8,8 @@ class freq_Distributor():
 
     def frequency(self, modus, lang, *args):
 
+        print ('creating toplists...')
+
         self.full_freq = []
 
         self.en_freq = []

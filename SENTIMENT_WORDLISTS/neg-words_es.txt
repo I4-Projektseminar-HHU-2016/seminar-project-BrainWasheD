@@ -6550,3 +6550,11 @@ zurcido
 ópalo_negro
 ósmosis
 ótico
+buff
+nerf
+overpowered
+op
+underpowered
+up
+l2p
+broken

@@ -8,6 +8,8 @@ class filter_Stopwords():
     # Returns lists of Dictionaries with their respective language
     def remove_Stopwords(self, text, lang):
 
+        print ('applying stopwordfilters...')
+
         #Several Dictionaries to save the texts in different languages
 
         self.full_Text, self.full_Hashtag, self.full_Mentions, self.full_Stripped = {}, {}, {}, {}
@@ -69,7 +71,7 @@ class filter_Stopwords():
             #splitting the words into keywords, mentions and hashtags
             for word in text[elem].split():
                 if (lang[elem] in ['en', 'de', 'fr', 'es', 'ru', 'fi', 'no', 'sv', 'nl', 'it']):
-                    if ((word not in self.rotate[lang[elem]]) and (len(word) > 1) and (word != 's')):
+                    if ((word not in self.rotate[lang[elem]]) and (len(word) > 1) and (word != 's') and (word != 'rt') and (word != "it's")):
                         self.temp.append(word)
                         if re.match('#(\w+)', word):
                             self.hashtags.append(word)

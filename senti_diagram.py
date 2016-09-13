@@ -8,6 +8,8 @@ class sentimentDiagram(object):
     #Takes the results of sentiment.py and creates a pie-diagram of it
     def diagram(self, data):
 
+        print ('creating sentiment graphs...')
+
         self.labels = ['positive: '+str(data[0]), 'negative: '+str(data[1]), 'neutral: '+str(data[2])]
         self.sizes = data[:3]
         self.colors = ['yellowgreen', 'red', 'lightskyblue']

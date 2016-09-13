@@ -9,6 +9,7 @@ from senti_diagram import sentimentDiagram
 from percentages import percs
 import unicodecsv as csv
 from collections import Counter
+from toplist_graph import topGraph
 if __name__ == "__main__":
 
 
@@ -22,10 +23,10 @@ if __name__ == "__main__":
         senti = sentAna()
         sd = sentimentDiagram()
         prc = percs()
+        tg = topGraph()
 
         # text_Data, lang_Data, tweets_per_hour, unique_tweet, coordinates
         data_set_list = csv_reader.FileReader('result.csv')
-        
         #timelines.timeline(data_set_list[2])
 
         # List of Lists: full, english, german, french, spanish, russian, finnish, norwegian, swedisch, dutch, italian
@@ -33,26 +34,32 @@ if __name__ == "__main__":
         filtered_data_list = stops.remove_Stopwords(data_set_list[0], data_set_list[1])
 
         #full_freq, en_freq, de_freq, fr_freq, es_freq, ru_freq, fi_freq, no_freq, sv_freq, nl_freq, it_freq
-        undivided_toplist = tops.frequency('remove_hashtag', data_set_list[1], filtered_data_list[0][0])
-        hashtag_toplist = tops.frequency('keep_hashtag', data_set_list[1], filtered_data_list[0][1])
-        mention_toplist = tops.frequency('keep_hashtag', data_set_list[1], filtered_data_list[0][2])
+        #undivided_toplist = tops.frequency('remove_hashtag', data_set_list[1], filtered_data_list[0][0])
+        #hashtag_toplist = tops.frequency('keep_hashtag', data_set_list[1], filtered_data_list[0][1])
+        #mention_toplist = tops.frequency('keep_hashtag', data_set_list[1], filtered_data_list[0][2])
         #keyword_toplist = tops.frequency('keep_hashtag', data_set_list[1], filtered_data_list[0][3])
 
+        #tg.graph([undivided_toplist[0], hashtag_toplist[0], mention_toplist[0], keyword_toplist[0]],
+        #        ['undivided_all', 'hashtags_all', 'mentions_all', 'keywords_all'])
+
+        
         #Percentage of Mentions compared to all tweets
-        prc.percent(filtered_data_list[0][0])
+        #prc.percent(filtered_data_list[0][0], mention_toplist[0])
 
         #Creating the Wordpairs
-        pairings = pairs.pairings(undivided_toplist[0], filtered_data_list[0][0])
+        #pairings = pairs.pairings(undivided_toplist[0], filtered_data_list[0][0])
+        
         #Creating the worpairgraphs
-        cloud.create_Cloud(pairings)
+        #cloud.create_Cloud(pairings)
 
         #Sentimentanalysis
-        en_senti = senti.analyze(filtered_data_list[1][0], 'en')
-        de_senti = senti.analyze(filtered_data_list[2][0], 'de')
-        es_senti = senti.analyze(filtered_data_list[4][0], 'es')
-        all_senti = [en_senti[0]+de_senti[0]+es_senti[0], en_senti[1]+de_senti[1]+es_senti[1], en_senti[2]+de_senti[2]+es_senti[2], 'all']
+        #en_senti = senti.analyze(filtered_data_list[1][0], 'en')
+        #de_senti = senti.analyze(filtered_data_list[2][0], 'de')
+        #es_senti = senti.analyze(filtered_data_list[4][0], 'es')
+        #all_senti = [en_senti[0]+de_senti[0]+es_senti[0], en_senti[1]+de_senti[1]+es_senti[1], en_senti[2]+de_senti[2]+es_senti[2], 'all']
+        
         #Creating the graphs of the sentiment analysis
-        sd.diagram(en_senti)
-        sd.diagram(de_senti)
-        sd.diagram(es_senti)
-        sd.diagram(all_senti)
+        #sd.diagram(en_senti)
+        #sd.diagram(de_senti)
+        #sd.diagram(es_senti)
+        #sd.diagram(all_senti)

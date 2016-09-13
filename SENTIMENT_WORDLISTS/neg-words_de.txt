@@ -15630,3 +15630,11 @@ züchtigten
 überwältiget
 überwältig
 überwältigtet
+buff
+nerf
+overpowered
+op
+underpowered
+up
+l2p
+broken

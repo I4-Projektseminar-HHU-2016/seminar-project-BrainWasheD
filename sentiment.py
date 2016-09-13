@@ -5,7 +5,10 @@ class sentAna(object):
     #Takes lists of positive and negative Terms and their variations
     #Compares it with the words in the tweets and counts positive and negative words to compare against
     #More positive words than negative ones means the tweet tends to be positive
-    def analyze(self, data, lang):        
+    def analyze(self, data, lang):
+
+        print ('calculating sentiment...')
+        
         self.pos_Count = 0
         self.neg_Count = 0
         self.neut_Count = 0
@@ -25,5 +28,4 @@ class sentAna(object):
             elif self.pos_Count_Sent == self.neg_Count_Sent:
                 self.neut_Count += 1
 
-        print ('pos: ', self.pos_Count, 'neg: ', self.neg_Count, 'neut: ', self.neut_Count)
         return [self.pos_Count, self.neg_Count, self.neut_Count, lang]

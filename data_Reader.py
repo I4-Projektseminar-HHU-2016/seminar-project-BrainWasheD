@@ -9,6 +9,8 @@ class CSVDataReader():
         return
     def FileReader(self, fileName):
 
+        print ('reading file...')
+
         self.temp_id = []
         self.temp_datelist = []
         self.temp_time_of_day = []
