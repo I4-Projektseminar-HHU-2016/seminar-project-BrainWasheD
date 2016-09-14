@@ -9,6 +9,8 @@ class topGraph(object):
 
     def graph(self, toplists, names):
 
+        print ('creating toplist graphs...')
+
         self.colors = cm.Set1(np.arange(25)/25.)
         self.index = 0
 
