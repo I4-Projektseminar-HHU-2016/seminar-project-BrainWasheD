@@ -46,6 +46,7 @@ class filter_Stopwords():
         #Dictionary containing the Stopwordlists of the languages
         self.rotate = {
                         'en' : self.en_Stops,
+                        'en-gb' : self.en_Stops,
                         'de' : self.de_Stops,
                         'fr' : self.fr_Stops,
                         'es' : self.es_Stops,
@@ -55,6 +56,20 @@ class filter_Stopwords():
                         'sv' : self.sv_Stops,
                         'nl' : self.nl_Stops,
                         'it' : self.it_Stops
+        }
+
+        self.rotate_two = {
+                        'en' : [self.en_Text, self.en_Hashtag, self.en_Mentions, self.en_Stripped],
+                        'en-gb' : [self.en_Text, self.en_Hashtag, self.en_Mentions, self.en_Stripped],
+                        'de' : [self.de_Text, self.de_Hashtag, self.de_Mentions, self.de_Stripped],
+                        'fr' : [self.fr_Text, self.fr_Hashtag, self.fr_Mentions, self.fr_Stripped],
+                        'es' : [self.es_Text, self.es_Hashtag, self.es_Mentions, self.es_Stripped],
+                        'ru' : [self.ru_Text, self.ru_Hashtag, self.ru_Mentions, self.ru_Stripped],
+                        'fi' : [self.fi_Text, self.fi_Hashtag, self.fi_Mentions, self.fi_Stripped],
+                        'no' : [self.no_Text, self.no_Hashtag, self.no_Mentions, self.no_Stripped],
+                        'sv' : [self.sv_Text, self.sv_Hashtag, self.sv_Mentions, self.sv_Stripped],
+                        'nl' : [self.nl_Text, self.nl_Hashtag, self.nl_Mentions, self.nl_Stripped],
+                        'it' : [self.it_Text, self.it_Hashtag, self.it_Mentions, self.it_Stripped]
         }
 
         for elem in text:
@@ -70,7 +85,7 @@ class filter_Stopwords():
 
             #splitting the words into keywords, mentions and hashtags
             for word in text[elem].split():
-                if (lang[elem] in ['en', 'de', 'fr', 'es', 'ru', 'fi', 'no', 'sv', 'nl', 'it']):
+                if (lang[elem] in ['en', 'en-gb', 'de', 'fr', 'es', 'ru', 'fi', 'no', 'sv', 'nl', 'it']):
                     if ((word not in self.rotate[lang[elem]]) and (len(word) > 1) and (word != 's') and (word != 'rt') and (word != "it's")):
                         self.temp.append(word)
                         if re.match('#(\w+)', word):
@@ -83,94 +98,15 @@ class filter_Stopwords():
             self.temp = [x for x in self.temp if x != 's']
 
             #Saving the Data into the respective dictionaries
-            if lang[elem] == 'en':
+
+            if lang[elem] in ['en', 'en-gb', 'de', 'fr', 'es', 'ru', 'fi', 'no', 'sv', 'nl', 'it']:
                 
-                self.en_Text[elem] = self.temp
-                self.en_Hashtag[elem] = self.hashtags
+                self.rotate_two[lang[elem]][0] = self.temp
+                self.rotate_two[lang[elem]][1] = self.hashtags
                 if not len(self.mentions) == 0:
-                    self.en_Mentions[elem] = self.mentions
-                self.en_Stripped[elem] = self.stripped
+                    self.rotate_two[lang[elem]][2] = self.mentions
+                self.rotate_two[lang[elem]][3] = self.stripped
 
-            elif lang[elem] == 'en-gb':
-                
-                self.en_Text[elem] = self.temp
-                self.en_Hashtag[elem] = self.hashtags
-                if not len(self.mentions) == 0:
-                    self.en_Mentions[elem] = self.mentions
-                self.en_Stripped[elem] = self.stripped
-
-                
-            elif lang[elem] == 'de':
-                
-                self.de_Text[elem] = self.temp
-                self.de_Hashtag[elem] = self.hashtags
-                if not len(self.mentions) == 0:
-                    self.de_Mentions[elem] = self.mentions
-                self.de_Stripped[elem] = self.stripped
-                
-            elif lang[elem] == 'fr':
-
-                self.fr_Text[elem] = self.temp
-                self.fr_Hashtag[elem] = self.hashtags
-                if not len(self.mentions) == 0:
-                    self.fr_Mentions[elem] = self.mentions
-                self.fr_Stripped[elem] = self.stripped
-                
-            elif lang[elem] == 'es':
-
-                self.es_Text[elem] = self.temp
-                self.es_Hashtag[elem] = self.hashtags
-                if not len(self.mentions) == 0:
-                    self.es_Mentions[elem] = self.mentions
-                self.es_Stripped[elem] = self.stripped
-                                 
-            elif lang[elem] == 'ru':
-                
-                self.ru_Text[elem] = self.temp
-                self.ru_Hashtag[elem] = self.hashtags
-                if not len(self.mentions) == 0:
-                    self.ru_Mentions[elem] = self.mentions
-                self.ru_Stripped[elem] = self.stripped
-
-            elif lang[elem] == 'fi':
-                    
-                self.fi_Text[elem] = self.temp
-                self.fi_Hashtag[elem] = self.hashtags
-                if not len(self.mentions) == 0:
-                    self.fi_Mentions[elem] = self.mentions
-                self.fi_Stripped[elem] = self.stripped
-
-            elif lang[elem] == 'no':
-                    
-                self.no_Text[elem] = self.temp
-                self.no_Hashtag[elem] = self.hashtags
-                if not len(self.mentions) == 0:
-                    self.no_Mentions[elem] = self.mentions
-                self.no_Stripped[elem] = self.stripped
-
-            elif lang[elem] == 'sv':
-                
-                self.sv_Text[elem] = self.temp
-                self.sv_Hashtag[elem] = self.hashtags
-                if not len(self.mentions) == 0:
-                    self.sv_Mentions[elem] = self.mentions
-                self.sv_Stripped[elem] = self.stripped
-
-            elif lang[elem] == 'nl':
-                
-                self.nl_Text[elem] = self.temp
-                self.nl_Hashtag[elem] = self.hashtags
-                if not len(self.mentions) == 0:
-                    self.nl_Mentions[elem] = self.mentions
-                self.nl_Stripped[elem] = self.stripped
-
-            elif lang[elem] == 'it':
-
-                self.it_Text[elem] = self.temp
-                self.it_Hashtag[elem] = self.hashtags
-                if not len(self.mentions) == 0:
-                    self.it_Mentions[elem] = self.mentions
-                self.it_Stripped[elem] = self.stripped
 
             self.full_Text[elem] = self.temp
             self.full_Hashtag[elem] = self.hashtags

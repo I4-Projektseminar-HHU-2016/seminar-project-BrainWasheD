@@ -27,7 +27,7 @@ if __name__ == "__main__":
 
         # text_Data, lang_Data, tweets_per_hour, unique_tweet, coordinates
         data_set_list = csv_reader.FileReader('result.csv')
-        timelines.timeline(data_set_list[2])
+        #timelines.timeline(data_set_list[2])
 
         # List of Lists: full, english, german, french, spanish, russian, finnish, norwegian, swedisch, dutch, italian
         # Each List has: full text without stopwords, hashtags, mentions, keywords only
@@ -44,22 +44,28 @@ if __name__ == "__main__":
 
         
         #Percentage of Mentions compared to all tweets
-        prc.percent(filtered_data_list[0][0], mention_toplist[0])
+        #prc.percent(filtered_data_list[0][0], mention_toplist[0])
 
         #Creating the Wordpairs
         pairings = pairs.pairings(undivided_toplist[0], filtered_data_list[0][0])
+
+        with open('plotly.csv', 'ab') as resultFile:
+            writer = csv.writer(resultFile, delimiter=";", lineterminator="\r\n", encoding='utf-8')
+            for tag in undivided_toplist[0]:
+                (key, value) = tag
+                writer.writerow([tag, pairings[key]])
         
         #Creating the worpairgraphs
-        cloud.create_Cloud(pairings)
+        #cloud.create_Cloud(pairings)
 
         #Sentimentanalysis
-        en_senti = senti.analyze(filtered_data_list[1][0], 'en')
-        de_senti = senti.analyze(filtered_data_list[2][0], 'de')
-        es_senti = senti.analyze(filtered_data_list[4][0], 'es')
-        all_senti = [en_senti[0]+de_senti[0]+es_senti[0], en_senti[1]+de_senti[1]+es_senti[1], en_senti[2]+de_senti[2]+es_senti[2], 'all']
+        #en_senti = senti.analyze(filtered_data_list[1][0], 'en')
+        #de_senti = senti.analyze(filtered_data_list[2][0], 'de')
+        #es_senti = senti.analyze(filtered_data_list[4][0], 'es')
+        #all_senti = [en_senti[0]+de_senti[0]+es_senti[0], en_senti[1]+de_senti[1]+es_senti[1], en_senti[2]+de_senti[2]+es_senti[2], 'all']
         
         #Creating the graphs of the sentiment analysis
-        sd.diagram(en_senti)
-        sd.diagram(de_senti)
-        sd.diagram(es_senti)
-        sd.diagram(all_senti)
+        #sd.diagram(en_senti)
+        #sd.diagram(de_senti)
+        #sd.diagram(es_senti)
+        #sd.diagram(all_senti)

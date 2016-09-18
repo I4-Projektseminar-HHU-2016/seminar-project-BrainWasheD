@@ -30,6 +30,20 @@ class freq_Distributor():
         self.freq= []
         self._fullString = ''
 
+        self.rotate = {
+                        'en' : self.en_freq,
+                        'en-gb' : self.en_freq,
+                        'de' : self.de_freq,
+                        'fr' : self.fr_freq,
+                        'es' : self.es_freq,
+                        'ru' : self.ru_freq,
+                        'fi' : self.fi_freq,
+                        'no' : self.no_freq,
+                        'sv' : self.sv_freq,
+                        'nl' : self.nl_freq,
+                        'it' : self.it_freq
+        }
+
         for dicts in args:
 
             self.lg = ''
@@ -54,77 +68,13 @@ class freq_Distributor():
                 self._String = self._String + ' ' + self.temp_String
 
 
-            if self.lg == 'en':
+            if self.lg in ['en', 'en-gb', 'de', 'fr', 'es', 'ru', 'fi', 'no', 'sv', 'nl', 'it']:
                 self.words = self.retok.tokenize(self._String)
                 self.words = [x for x in self.words if x != 's']
                 self.words = [x for x in self.words if x != 'of']
-                self.en_freq = FreqDist(self.words).most_common(25)
+                self.rotate[self.lg] = FreqDist(self.words).most_common(25)
                 self.full_words.append(self.words)
 
-            elif self.lg == 'de':
-                self.words = self.retok.tokenize(self._String)
-                self.words = [x for x in self.words if x != 's']
-                self.words = [x for x in self.words if x != 'of']
-                self.de_freq = FreqDist(self.words).most_common(25)                
-                self.full_words.append(self.words)
-
-            elif self.lg == 'fr':
-                self.words = self.retok.tokenize(self._String)
-                self.words = [x for x in self.words if x != 's']
-                self.words = [x for x in self.words if x != 'of']
-                self.fr_freq = FreqDist(self.words).most_common(25)
-                self.full_words.append(self.words)
-
-            elif self.lg == 'es':
-                self.words = self.retok.tokenize(self._String)
-                self.words = [x for x in self.words if x != 's']
-                self.words = [x for x in self.words if x != 'of']
-                self.es_freq = FreqDist(self.words).most_common(25)
-                self.full_words.append(self.words)
-
-            elif self.lg == 'ru':
-                self.words = self.retok.tokenize(self._String)
-                self.words = [x for x in self.words if x != 's']
-                self.words = [x for x in self.words if x != 'of']
-                self.ru_freq = FreqDist(self.words).most_common(25)
-                self.full_words.append(self.words)
-
-            
-
-            elif self.lg == 'fi':
-                self.words = self.retok.tokenize(self._String)
-                self.words = [x for x in self.words if x != 's']
-                self.words = [x for x in self.words if x != 'of']
-                self.fi_freq = FreqDist(self.words).most_common(25)
-                self.full_words.append(self.words)
-
-            elif self.lg == 'no':
-                self.words = self.retok.tokenize(self._String)
-                self.words = [x for x in self.words if x != 's']
-                self.words = [x for x in self.words if x != 'of']
-                self.no_freq = FreqDist(self.words).most_common(25)
-                self.full_words.append(self.words)
-
-            elif self.lg == 'sv':
-                self.words = self.retok.tokenize(self._String)
-                self.words = [x for x in self.words if x != 's']
-                self.words = [x for x in self.words if x != 'of']
-                self.sv_freq = FreqDist(self.words).most_common(25)
-                self.full_words.append(self.words)
-
-            elif self.lg == 'nl':
-                self.words = self.retok.tokenize(self._String)
-                self.words = [x for x in self.words if x != 's']
-                self.words = [x for x in self.words if x != 'of']
-                self.nl_freq = FreqDist(self.words).most_common(25)
-                self.full_words.append(self.words)
-
-            elif self.lg == 'it':
-                self.words = self.retok.tokenize(self._String)
-                self.words = [x for x in self.words if x != 's']
-                self.words = [x for x in self.words if x != 'of']
-                self.it_freq = FreqDist(self.words).most_common(25)
-                self.full_words.append(self.words)
 
         for elem in self.full_words:
             self.temp_fullString = ' '.join(elem)
