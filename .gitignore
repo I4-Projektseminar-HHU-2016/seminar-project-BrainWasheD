@@ -1,7 +1,6 @@
 twitter_keys.pyc
 __pycache__/data_Reader.cpython-35.pyc
 __pycache__/toplists.cpython-35.pyc
-twitter_keys.py
 *.pyc
 geo.py
 wordcloud2.py
