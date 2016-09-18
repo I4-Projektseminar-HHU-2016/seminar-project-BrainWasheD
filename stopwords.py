@@ -28,7 +28,7 @@ class filter_Stopwords():
 
         
         self.replaces = ["'re", "'ve", "'ll", "'m", "'t", "d'", "<", "]",
-                        "[", ">", ",", ".", "-", "_", ";", "+", "*", "~", "&amp", '"', 
+                        "[", ">", ",", ".", ";", "+", "*", "~", "&amp", '"', 
                         "!", "?", "|", "(", ")", ":"]
 
         self.en_Stops = set(stopwords.words('english'))

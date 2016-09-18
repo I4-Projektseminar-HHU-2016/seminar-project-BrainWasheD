@@ -27,7 +27,7 @@ if __name__ == "__main__":
 
         # text_Data, lang_Data, tweets_per_hour, unique_tweet, coordinates
         data_set_list = csv_reader.FileReader('result.csv')
-        #timelines.timeline(data_set_list[2])
+        timelines.timeline(data_set_list[2])
 
         # List of Lists: full, english, german, french, spanish, russian, finnish, norwegian, swedisch, dutch, italian
         # Each List has: full text without stopwords, hashtags, mentions, keywords only
