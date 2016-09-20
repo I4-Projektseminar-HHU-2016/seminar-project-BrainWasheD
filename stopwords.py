@@ -42,6 +42,10 @@ class filter_Stopwords():
         self.sv_Stops = set(stopwords.words('swedish'))
         self.nl_Stops = set(stopwords.words('dutch'))
         self.it_Stops = set(stopwords.words('italian'))
+        self.counter = 0
+        self.counter_ht = 0
+        self.counter_mt = 0
+        self.counter_kw = 0
 
         #Dictionary containing the Stopwordlists of the languages
         self.rotate = {
@@ -88,12 +92,16 @@ class filter_Stopwords():
                 if (lang[elem] in ['en', 'en-gb', 'de', 'fr', 'es', 'ru', 'fi', 'no', 'sv', 'nl', 'it']):
                     if ((word not in self.rotate[lang[elem]]) and (len(word) > 1) and (word != 's') and (word != 'rt') and (word != "it's")):
                         self.temp.append(word)
-                        if re.match('#(\w+)', word):
+                        self.counter += 1
+                        if re.match('\#(\w+)', word):
                             self.hashtags.append(word)
-                        elif re.match('(?<=^|(?<=[^a-zA-Z0-9-\.]))@([A-Za-z0-9_]+)', word):
+                            self.counter_ht += 1
+                        elif re.match('\@(\w+)', word):
                             self.mentions.append(word)
+                            self.counter_mt += 1
                         else:
                             self.stripped.append(word)
+                            self.counter_kw += 1
 
             self.temp = [x for x in self.temp if x != 's']
 
@@ -113,7 +121,7 @@ class filter_Stopwords():
             self.full_Mentions[elem] = self.mentions
             self.full_Stripped[elem] = self.stripped
 
-        self.full = [self.full_Text, self.full_Hashtag, self.full_Mentions, self.full_Stripped]
+        self.full = [self.full_Text, self.full_Hashtag, self.full_Mentions, self.full_Stripped, self.counter_ht, self.counter_mt, self.counter_kw]
         
         self.english = [self.en_Text, self.en_Hashtag, self.en_Mentions, self.en_Stripped]
         self.german = [self.de_Text, self.de_Hashtag, self.de_Mentions, self.de_Stripped]
@@ -127,7 +135,7 @@ class filter_Stopwords():
         self.dutch = [self.nl_Text, self.nl_Hashtag, self.nl_Mentions, self.nl_Stripped]
         self.italian = [self.it_Text, self.it_Hashtag, self.it_Mentions, self.it_Stripped]
 
-        return [self.full, self.english, self.german, self.french, self.spanish,
-                self.russian, self.finnish, self.norwegian, self.swedish, self.dutch, self.italian]
+        return [self.full, self.english, self.german, self.french, self.spanish, self.russian,
+                self.finnish, self.norwegian, self.swedish, self.dutch, self.italian]
 
     

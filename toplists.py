@@ -24,7 +24,7 @@ class freq_Distributor():
         self.nl_freq = []
         self.it_freq = []
 
-        self.retok = nltk.RegexpTokenizer('\w+|\#?\w+|\@?\w+')
+        self.retok = nltk.RegexpTokenizer('\w+|\#?\w+|\@\w+')
 
         self.full_words = []
         self.freq= []

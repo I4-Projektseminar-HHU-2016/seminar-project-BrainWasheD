@@ -30,10 +30,10 @@ if __name__ == "__main__":
         timelines.timeline(data_set_list[2])
 
         # List of Lists: full, english, german, french, spanish, russian, finnish, norwegian, swedisch, dutch, italian
-        # Each List has: full text without stopwords, hashtags, mentions, keywords only
+        # Each List has: full text without stopwords, hashtags, mentions, keywords only, (wordcount, hashtagcount, mentioncount, keywordcount for FULL only)
         filtered_data_list = stops.remove_Stopwords(data_set_list[0], data_set_list[1])
 
-        #full_freq, en_freq, de_freq, fr_freq, es_freq, ru_freq, fi_freq, no_freq, sv_freq, nl_freq, it_freq
+        full_freq, en_freq, de_freq, fr_freq, es_freq, ru_freq, fi_freq, no_freq, sv_freq, nl_freq, it_freq
         undivided_toplist = tops.frequency('remove_hashtag', data_set_list[1], filtered_data_list[0][0])
         hashtag_toplist = tops.frequency('keep_hashtag', data_set_list[1], filtered_data_list[0][1])
         mention_toplist = tops.frequency('keep_hashtag', data_set_list[1], filtered_data_list[0][2])
@@ -44,7 +44,7 @@ if __name__ == "__main__":
 
         
         #Percentage of Mentions compared to all tweets
-        prc.percent(filtered_data_list[0][0], mention_toplist[0])
+        prc.percent(filtered_data_list[0][0], mention_toplist[0], filtered_data_list[0][5])
 
         #Creating the Wordpairs
         pairings = pairs.pairings(undivided_toplist[0], filtered_data_list[0][0])
