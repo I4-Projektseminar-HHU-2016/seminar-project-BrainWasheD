@@ -14,7 +14,7 @@ class percs(object):
         print ('creating mention graphs...')
         #Counting Tweets that contain a @Mention
         self.count = 0
-        self.regex = re.compile('(?<=^|(?<=[^a-zA-Z0-9-\.]))@([A-Za-z0-9_]+)')
+        self.regex = re.compile('\@(\w+)')
         
         for elem in tweets:
             self.temp = ' '.join(tweets[elem])

@@ -33,7 +33,7 @@ if __name__ == "__main__":
         # Each List has: full text without stopwords, hashtags, mentions, keywords only, (wordcount, hashtagcount, mentioncount, keywordcount for FULL only)
         filtered_data_list = stops.remove_Stopwords(data_set_list[0], data_set_list[1])
 
-        full_freq, en_freq, de_freq, fr_freq, es_freq, ru_freq, fi_freq, no_freq, sv_freq, nl_freq, it_freq
+        #full_freq, en_freq, de_freq, fr_freq, es_freq, ru_freq, fi_freq, no_freq, sv_freq, nl_freq, it_freq
         undivided_toplist = tops.frequency('remove_hashtag', data_set_list[1], filtered_data_list[0][0])
         hashtag_toplist = tops.frequency('keep_hashtag', data_set_list[1], filtered_data_list[0][1])
         mention_toplist = tops.frequency('keep_hashtag', data_set_list[1], filtered_data_list[0][2])
