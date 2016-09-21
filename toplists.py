@@ -26,6 +26,9 @@ class freq_Distributor():
 
         self.retok = nltk.RegexpTokenizer('\w+|\#?\w+|\@\w+')
 
+        self.warcraft = ['warc', 'warc...', 'warcr', 'warcr...', 'warcra', 'warcra...', 'warcraf', 'warcraf...', 'warcraft...']
+        self.blizzard = ['b...', 'bl...', 'bli...', 'bliz', 'bliz...', 'blizz', 'blizz...', 'blizza...', 'blizzar...', 'blizzard...']
+
         self.full_words = []
         self.freq= []
         self._fullString = ''
@@ -56,12 +59,21 @@ class freq_Distributor():
 
                 if modus == 'remove_hashtag':
                     for word in dicts[elem]:
-                        if word != 's':
-                            self.temps.append(word.replace('#', ''))
+                        self.word = word
+                        if self.word != 's':
+                            if self.word in self.warcraft:
+                                self.word = self.word.replace(self.word, 'warcraft')
+                            elif self.word in self.blizzard:
+                                self.word = self.word.replace(self.word, 'blizzard')
+                            self.temps.append(self.word.replace('#', ''))
 
                 elif modus == 'keep_hashtag':
                     for word in dicts[elem]:
                         if word != 's':
+                            if self.word in self.warcraft:
+                                self.word = self.word.replace(self.word, 'warcraft')
+                            elif self.word in self.blizzard:
+                                self.word = self.word.replace(self.word, 'blizzard')
                             self.temps.append(word)
 
                 self.temp_String = ' '.join(self.temps)

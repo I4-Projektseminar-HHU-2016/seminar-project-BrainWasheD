@@ -3,7 +3,9 @@ from timeline import TimelineCreator
 from stopwords import filter_Stopwords
 from toplists import freq_Distributor
 from wordpairs import word_pairs
+from wordpairs_alter import word_pairsAlter
 from tagclouds import tagCloud
+from tagclouds_alter import tagCloudAlter
 from sentiment import sentAna
 from senti_diagram import sentimentDiagram
 from percentages import percs
@@ -19,7 +21,9 @@ if __name__ == "__main__":
         stops = filter_Stopwords()
         tops = freq_Distributor()
         pairs = word_pairs()
+        pairs_alter = word_pairsAlter()
         cloud = tagCloud()
+        cloud_alter = tagCloudAlter()
         senti = sentAna()
         sd = sentimentDiagram()
         prc = percs()
@@ -57,6 +61,7 @@ if __name__ == "__main__":
         
         #Creating the worpairgraphs
         cloud.create_Cloud(pairings)
+        cloud_alter.create_Cloud(pairs_alter.pairings(undivided_toplist[0], filtered_data_list[0][0]))
 
         #Sentimentanalysis
         en_senti = senti.analyze(filtered_data_list[1][0], 'en')

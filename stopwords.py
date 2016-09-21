@@ -47,6 +47,9 @@ class filter_Stopwords():
         self.counter_mt = 0
         self.counter_kw = 0
 
+        self.warcraft = ['warc', 'warc...', 'warcr', 'warcr...', 'warcra', 'warcra...', 'warcraf', 'warcraf...', 'warcraft...']
+        self.blizzard = ['b...', 'bl...', 'bli...', 'bliz', 'bliz...', 'blizz', 'blizz...', 'blizza...', 'blizzar...', 'blizzard...']
+
         #Dictionary containing the Stopwordlists of the languages
         self.rotate = {
                         'en' : self.en_Stops,
@@ -89,18 +92,24 @@ class filter_Stopwords():
 
             #splitting the words into keywords, mentions and hashtags
             for word in text[elem].split():
+                self.word = word
                 if (lang[elem] in ['en', 'en-gb', 'de', 'fr', 'es', 'ru', 'fi', 'no', 'sv', 'nl', 'it']):
-                    if ((word not in self.rotate[lang[elem]]) and (len(word) > 1) and (word != 's') and (word != 'rt') and (word != "it's")):
-                        self.temp.append(word)
+                    if ((self.word not in self.rotate[lang[elem]]) and (len(self.word) > 1) and (self.word != 's') and (self.word != 'rt') and (self.word != "it's")):
+                        if self.word in self.warcraft:
+                            self.word = self.word.replace(self.word, 'warcraft')
+                        elif self.word in self.blizzard:
+                            self.word = self.word.replace(self.word, 'blizzard')
+                        self.temp.append(self.word)
                         self.counter += 1
-                        if re.match('\#(\w+)', word):
-                            self.hashtags.append(word)
+                        if re.match('\#(\w+)', self.word):
+                            self.hashtags.append(self.word)
                             self.counter_ht += 1
-                        elif re.match('\@(\w+)', word):
-                            self.mentions.append(word)
+                        elif re.match('\@(\w+)', self.word):
+                            self.mentions.append(self.word)
                             self.counter_mt += 1
                         else:
-                            self.stripped.append(word)
+
+                            self.stripped.append(self.word)
                             self.counter_kw += 1
 
             self.temp = [x for x in self.temp if x != 's']

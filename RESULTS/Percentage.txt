@@ -1,2 +1,0 @@
-mentions.png -> Alle Erwähnungen
-mentions_percentage -> TWEETS mit Erwähnungen, deshalb hab letztere weniger als mentions.png
