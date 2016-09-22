@@ -12,6 +12,7 @@ class sentAna(object):
         self.pos_Count = 0
         self.neg_Count = 0
         self.neut_Count = 0
+
         for elem in data.values():
             self.pos_Count_Sent = 0
             self.neg_Count_Sent = 0

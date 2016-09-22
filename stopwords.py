@@ -92,37 +92,37 @@ class filter_Stopwords():
 
             #splitting the words into keywords, mentions and hashtags
             for word in text[elem].split():
-                self.word = word
                 if (lang[elem] in ['en', 'en-gb', 'de', 'fr', 'es', 'ru', 'fi', 'no', 'sv', 'nl', 'it']):
-                    if ((self.word not in self.rotate[lang[elem]]) and (len(self.word) > 1) and (self.word != 's') and (self.word != 'rt') and (self.word != "it's")):
-                        if self.word in self.warcraft:
-                            self.word = self.word.replace(self.word, 'warcraft')
-                        elif self.word in self.blizzard:
-                            self.word = self.word.replace(self.word, 'blizzard')
-                        self.temp.append(self.word)
+                    if ((word not in self.rotate[lang[elem]]) and (len(word) > 1) and (word != 's') and (word != 'rt') and (word != "it's")):
+                        self.temp.append(word)
                         self.counter += 1
-                        if re.match('\#(\w+)', self.word):
-                            self.hashtags.append(self.word)
+                        if re.match('\#(\w+)', word):
+                            self.hashtags.append(word)
                             self.counter_ht += 1
-                        elif re.match('\@(\w+)', self.word):
-                            self.mentions.append(self.word)
+                        elif re.match('\@(\w+)', word):
+                            self.mentions.append(word)
                             self.counter_mt += 1
                         else:
-
-                            self.stripped.append(self.word)
+                            self.stripped.append(word)
                             self.counter_kw += 1
 
             self.temp = [x for x in self.temp if x != 's']
+            for word in self.temp:
+                if word in self.warcraft:
+                    word = word.replace(word, 'warcraft')
+                elif word in self.blizzard:
+                    word = word.replace(word, 'blizzard')
 
             #Saving the Data into the respective dictionaries
 
+
             if lang[elem] in ['en', 'en-gb', 'de', 'fr', 'es', 'ru', 'fi', 'no', 'sv', 'nl', 'it']:
                 
-                self.rotate_two[lang[elem]][0] = self.temp
-                self.rotate_two[lang[elem]][1] = self.hashtags
+                self.rotate_two[lang[elem]][0][elem] = self.temp
+                self.rotate_two[lang[elem]][1][elem] = self.hashtags
                 if not len(self.mentions) == 0:
-                    self.rotate_two[lang[elem]][2] = self.mentions
-                self.rotate_two[lang[elem]][3] = self.stripped
+                    self.rotate_two[lang[elem]][2][elem] = self.mentions
+                self.rotate_two[lang[elem]][3][elem] = self.stripped
 
 
             self.full_Text[elem] = self.temp
