@@ -63,6 +63,8 @@ if __name__ == "__main__":
         cloud.create_Cloud(pairings)
         cloud_alter.create_Cloud(pairs_alter.pairings(undivided_toplist[0], filtered_data_list[0][0]))
 
+
+
         #Sentimentanalysis
         en_senti = senti.analyze(filtered_data_list[1][0], 'en')
         de_senti = senti.analyze(filtered_data_list[2][0], 'de')
