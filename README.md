@@ -1,15 +1,15 @@
-# TWEET-DATENANALYSE AUF HÄUFIGKEITEN, SCHLAGWORT- UND HASHTAGVERTEILUNG ZUM THEMA: WORLD OF WARCRAFT – LEGION RELEASE ZUM 30.08.2016
+# TWEET-DATA ANALYSIS: FREQUENCIES, KEYWORD AND HASHTAGDISTRIBUTION ON THE TOPIC: WORLD OF WARCRAFT – LEGION RELEASE ON 30.08.2016
 
-WOW-HYPE. WELCHE SCHLAGWORTE, HASHTAGS UND ERWÄHNUNGEN ZUM WOW-LEGION RELEASE WERDEN IN TWITTER AM HÄUFIGSTEN VERWENDET 
-UND WELCHE KOMMEN BESONDERS HÄUFIG ZUSAMMEN VOR? LASSEN SICH TENDENZEN HERAUSFILTERN?
+WOW-HYPE. WHICH HASHTAGS, MENTIONS AND KEYWORDS ON THE TOPIC WOW-LEGION RELEASE ARE USED MOST FREQUENTLY IN TWITTER 
+AND WHICH ONES HAPPEN IN PAIRS THE MOST?
 
 ## Features ##
 
-- Toplisten für Hashtags, Erwähnungen, Schlagworten und allem zusammen
-- Sentimentanalyse anhand positiver und negativer Wortlisten
-- Wortpaarungen: Welche Worte kommen häufig mit den Toptermen vor
+- Toplists for Hashtags, Mentions, Keywords and all mashed up
+- Sentiment analysis through wordlists of positive and negative terms
+- Wordpairs: Which words happen to be together in the same tweets as the topterms and how often
 - Timeline
-- Tweets mit Erwähnungen in Relation zu allen Tweets
+- Tweets with mentions related to all tweets
 
 ## Getting Started
 
@@ -34,9 +34,8 @@ pip install:
 
 ### How-to-Use
 
-save_Tweets_Client.py & save_Tweets_Streams.py zum Fetchen der Tweets
-main.py zum Starten aller Funktionen
-
+run save_Tweets_Client.py & save_Tweets_Streams.py to fetch the Tweets
+run main.py to use all other functions
 
 
 ## Authors
@@ -45,5 +44,5 @@ main.py zum Starten aller Funktionen
 
 ## Acknowledgments
 
-Die Dateien save_Tweets_Streams, save_Tweets_Client und data_Reader sowie die Implementation der Ergebnisse auf der Homepage 
-http://cede-maiori.info/news.php ist in Zusammenarbeit mit Thorsten Brückner geschehen.
+The Files save_Tweets_Streams, save_Tweets_Client and data_Reader plus the implementation of the results Ergebnisse on the Homepage 
+http://cede-maiori.info/news.php were done in teamwork with Thorsten Brückner.
