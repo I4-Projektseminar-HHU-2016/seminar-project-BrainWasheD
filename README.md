@@ -43,7 +43,7 @@ run main.py to use all other functions
 
 ## Authors
 
-* **Raphael Katschke** -(https://github.com/I4-Projektseminar-HHU-2016/seminar-project-BrainWasheD)
+* **Raphael Katschke** -(<a href="https://github.com/Brainwashed">BrainWasheD</a>)
 
 ## Acknowledgments
 
