@@ -38,7 +38,7 @@ After installing Python 3.5 run the following pip installs:
 
 run save_Tweets_Client.py & save_Tweets_Streams.py to fetch the Tweets
 
-run main.py to use all other functions
+run main.py to save the listed features in their respective resultfiles.
 
 
 ## Authors
