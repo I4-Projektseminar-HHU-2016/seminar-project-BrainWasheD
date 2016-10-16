@@ -8,8 +8,8 @@ AND WHICH ONES HAPPEN IN PAIRS THE MOST?
 - Toplists for Hashtags, Mentions, Keywords and all mashed up
 - Sentiment analysis through wordlists of positive and negative terms
 - Wordpairs: Which words happen to be together in the same tweets as the topterms and how often
-- Timeline
-- Tweets with mentions related to all tweets
+- Timeline on hourly basis
+- Graphs to show relations between Tweets with mentions and all Tweets
 
 ## Getting Started
 
@@ -19,7 +19,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 Python 3.5 is required to run the code.
 
-pip install:
+After installing Python 3.5 run the following pip installs:
 
 - Codecs
 - Collections
