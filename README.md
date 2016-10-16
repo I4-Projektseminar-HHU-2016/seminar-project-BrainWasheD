@@ -35,8 +35,8 @@ After installing Python 3.5 run the following pip installs:
 
 Get the API Access Key/Token for twitter.
 
-<a href="https://dev.twitter.com/oauth/overview/application-owner-access-tokens">how-to-get-access-tokens</a>
-insert the generated keys and token into twitter_keys.py
+- <a href="https://dev.twitter.com/oauth/overview/application-owner-access-tokens">how-to-get-access-tokens</a>
+- insert the generated keys and token into twitter_keys.py
 
 ### How-to-Use
 
