@@ -17,6 +17,8 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisities
 
+Python 3.5 is required to run the code.
+
 pip install:
 
 - Codecs
