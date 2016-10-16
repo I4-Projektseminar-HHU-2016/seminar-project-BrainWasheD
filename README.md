@@ -47,5 +47,5 @@ run main.py to use all other functions
 
 ## Acknowledgments
 
-The Files save_Tweets_Streams, save_Tweets_Client and data_Reader plus the implementation of the results Ergebnisse on the Homepage 
-http://cede-maiori.info/news.php were done in teamwork with Thorsten Brückner.
+- the twitter crawler, datareader and homepage implementation was made in collaboration with
+<a href="https://github.com/Geemania">Thorsten Brückner</a>
